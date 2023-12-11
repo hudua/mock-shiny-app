@@ -9,7 +9,10 @@ FROM rocker/shiny:4.3.1
 # Package Manager is a good resource to help discover system deps
 RUN apt-get update && apt-get install -y \
     libcurl4-gnutls-dev \
-    libssl-dev
+    libssl-dev \
+    libudunits2-dev \
+    libproj-dev \
+    libgdal-dev
   
 # install R packages required 
 # Change the packages list to suit your needs
@@ -32,9 +35,10 @@ RUN R -e 'install.packages(c(\
               "R.utils", \
               "tibble", \
               "tidyr", \
+              "jsonlite", \
               "units" \
             ), \
-            repos="https://packagemanager.rstudio.com/cran/__linux__/focal/2021-04-23"\
+            repos="http://cran.rstudio.com/"\
           )'
 
 
